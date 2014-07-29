@@ -32,10 +32,7 @@ angular.module('akoenig.deckgrid').factory('DeckgridDescriptor', [
                                 '<div data-ng-repeat="card in column" data-ng-include="cardTemplate"></div>' +
                             '</div>';
 
-            this.scope = {
-                'model': '=source'
-            };
-
+            this.require = 'ngModel';
             //
             // Will be created in the linking function.
             //
@@ -106,7 +103,7 @@ angular.module('akoenig.deckgrid').factory('DeckgridDescriptor', [
                 scope.cardTemplate = attrs.cardtemplate;
             }
 
-            scope.mother = scope.$parent;
+            scope.model = scope.$eval(attrs.ngModel);
 
             this.$$deckgrid = Deckgrid.create(scope, elem[0]);
         };
