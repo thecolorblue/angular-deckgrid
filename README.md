@@ -25,26 +25,26 @@ A lightweight masonry-like grid for AngularJS.
 
 The directive does not depend on the visual representation. All the responsiveness and beauty comes from your CSS file. But wait a second. Let's take a look how the directive will be integrated. An example:
 
-    <div deckgrid source="photos" cardTemplate="templates/deckgrid-card.html" class="deckgrid"></div>
+    <div deckgrid ng-model="photos" cardTemplate="templates/deckgrid-card.html" class="deckgrid"></div>
 
 Okay, we assume that you have a collection of photos and you want to display these in a _deckgrid_, where every photo provides a _name_ and a _source_ URL. The internal structure of this collection is completely up to you. You can use any collection structure you want. No restrictions at all.
 
 ### The attributes
 
-* `source`: The collection of objects that should be passed into your _deckgrid_ (by reference. Object change will be reflected in the grid).
+* `ng-model`: The collection of objects that should be passed into your _deckgrid_ (by reference. Object change will be reflected in the grid).
 * `cardTemplate`: The URL to the template which represents one single card in the _deckgrid_.
 
 ### Alternative ways to provide the template
 * `cardTemplateString` attribute: You can provide this attribute *instead* of the `cardTemplate` attribute to use the attribute value directly as the template. Example:
 
     ```html
-    <div deckgrid class="deckgrid" source="photos" cardTemplateString="<p>{{card.title}}</p>"></div>
+    <div deckgrid class="deckgrid" ng-model="photos" cardTemplateString="<p>{{card.title}}</p>"></div>
     ```
 
 * No template attribute: if you omit a template attribute (`cardTemplate` and `cardTemplateString`), the inner HTML of the directive will be used as the template, like in:
 
     ```html
-    <div deckgrid class="deckgrid" source="photos">
+    <div deckgrid class="deckgrid" ng-model="photos">
         <div class="a-card">
             <h1>{{card.title}}</h1>
 
@@ -82,7 +82,7 @@ In order to use the index of the current card from within the card's template, u
 
     <span>{{card.$index}}</span>
 
-This index reflects the index of the corresponding object in the source collection.
+This index reflects the index of the corresponding object in the model collection.
 
 
 That's all! Ehm, no. If you run your application now, you will notice that there is only one column. What is missing? Well, we have to define the configuration for the visual representation. And what is the best place for something like this? Yes, for sure! Your CSS file(s).
