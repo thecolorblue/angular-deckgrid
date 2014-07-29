@@ -55,7 +55,7 @@ describe('Unit: The angular-deckgrid', function () {
             $templateCache.put('views/deckgrid-card.html', '<img data-ng-src="{{card.src}}" alt="{{card.id}}" src="">' +
                 '<span class="index">{{card.$index}}</span>');
 
-            $elem = $compile('<deckgrid class="deckgrid" source="photos" cardTemplate="views/deckgrid-card.html"></deckgrid>')($rootScope);
+            $elem = $compile('<deckgrid class="deckgrid" ng-model="photos" cardTemplate="views/deckgrid-card.html"></deckgrid>')($rootScope);
 
             $rootScope.$digest();
             
@@ -97,7 +97,7 @@ describe('Unit: The angular-deckgrid', function () {
             // 
             // use inner html as the card template
             //
-            $elem = $compile('<deckgrid class="deckgrid" source="photos">' +
+            $elem = $compile('<deckgrid class="deckgrid" ng-model="photos">' +
                 '<img data-ng-src="{{card.src}}" alt="{{card.id}}" src=""></deckgrid>')($rootScope);
 
             $rootScope.$digest();
@@ -135,7 +135,7 @@ describe('Unit: The angular-deckgrid', function () {
             // 
             // use the provided attribute value
             //
-            $elem = $compile('<deckgrid class="deckgrid" source="photos" ' +
+            $elem = $compile('<deckgrid class="deckgrid" ng-model="photos" ' +
                 'cardTemplateString="<p>{{card.id}}</p>"></deckgrid>')($rootScope);
 
             $rootScope.$digest();
